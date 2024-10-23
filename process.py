@@ -269,6 +269,9 @@ def reservation(params: dict, mobile: str):
     if responses.status_code == 200:
         r_success = True
         msg = f'手机:{mobile};'
+    elif responses.status_code == 480:
+        # 当天前面轮次已预约成功，本轮也视为成功，不做告警
+        r_success = True
     else:
         r_success = False
 
